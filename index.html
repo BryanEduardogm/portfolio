@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bryan Eduardo Gouvea — Desenvolvedor Front-end</title>
+  <meta name="description" content="Portfólio de Bryan Eduardo Gouvea: cinco sites completos feitos com HTML, CSS, JavaScript e Node.js.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+  <!-- ==========================================================
+       Cabeçalho — quem sou e como me achar
+       ========================================================== -->
+  <header class="topo">
+    <div class="container">
+      <p class="etiqueta">Portfólio · Desenvolvimento web</p>
+      <h1>Bryan Eduardo<br>Gouvea</h1>
+      <p class="apresentacao">
+        Estudo desenvolvimento web e aprendo construindo coisas inteiras, não pedaços.
+        Aqui estão cinco sites completos — cada um com sua própria identidade visual,
+        suas telas, seu carrinho ou seu formulário funcionando de ponta a ponta.
+        Todos escritos à mão, sem framework e sem template pronto.
+      </p>
+
+      <ul class="contato">
+        <li><a href="https://github.com/bryanyiru">github.com/bryanyiru</a></li>
+        <li><a href="mailto:bryaneduardogouvea@gmail.com">bryaneduardogouvea@gmail.com</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ==========================================================
+       Projetos — cada um com a cor da própria marca
+       ========================================================== -->
+  <main class="container">
+
+    <div class="secao-titulo">
+      <h2>Projetos</h2>
+      <span class="contagem">05</span>
+    </div>
+
+    <!-- ---------- NovaCell ---------- -->
+    <article class="projeto" style="--cor: #5b6bff">
+      <div class="projeto-lado">
+        <span class="marca"></span>
+        <h3>NovaCell</h3>
+        <p class="tipo">Loja de celulares</p>
+        <ul class="tags">
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>localStorage</li>
+        </ul>
+      </div>
+
+      <div class="projeto-corpo">
+        <p class="resumo">
+          Uma loja de eletrônicos de oito páginas, com catálogo de 160 produtos.
+          É o projeto mais completo em quantidade de tela: o cliente busca, filtra,
+          monta o carrinho, calcula o frete e fecha o pedido.
+        </p>
+        <ul class="itens">
+          <li>Busca e filtros por categoria, preço e destaque</li>
+          <li>Carrinho que continua cheio depois de fechar o navegador</li>
+          <li>Calculadora de frete e simulador de troca do aparelho usado</li>
+          <li>Login, área de perfil e finalização de compra</li>
+        </ul>
+        <div class="acoes">
+          <a class="btn btn-forte" href="https://novacel.netlify.app">Ver site</a>
+          <a class="btn" href="https://github.com/bryanyiru/novacell">Ver código</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- ---------- AutoForte Motors ---------- -->
+    <article class="projeto" style="--cor: #E63946">
+      <div class="projeto-lado">
+        <span class="marca"></span>
+        <h3>AutoForte Motors</h3>
+        <p class="tipo">Concessionária</p>
+        <ul class="tags">
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>Node.js</li>
+          <li>Express</li>
+          <li>MongoDB</li>
+        </ul>
+      </div>
+
+      <div class="projeto-corpo">
+        <p class="resumo">
+          Uma landing page de página única, pensada para levar o visitante do
+          primeiro olhar até o agendamento de um test-drive sem nunca sair da tela.
+        </p>
+        <ul class="itens">
+          <li>Rolagem única com navegação por âncoras</li>
+          <li>Vitrine de estoque, seção da equipe e depoimentos de clientes</li>
+          <li>Formulário de contato e test-drive com validação campo a campo</li>
+          <li>Servidor em Node.js que recebe e guarda os pedidos</li>
+        </ul>
+        <div class="acoes">
+          <a class="btn btn-forte" href="https://autoforte-motors.netlify.app">Ver site</a>
+          <a class="btn" href="https://github.com/bryanyiru/autoforte-motors">Ver código</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- ---------- MóveisHouse ---------- -->
+    <article class="projeto" style="--cor: #C1602B">
+      <div class="projeto-lado">
+        <span class="marca"></span>
+        <h3>MóveisHouse</h3>
+        <p class="tipo">Loja de móveis</p>
+        <ul class="tags">
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>Node.js</li>
+          <li>Express</li>
+          <li>MongoDB</li>
+        </ul>
+      </div>
+
+      <div class="projeto-corpo">
+        <p class="resumo">
+          Um e-commerce de móveis que cabe numa página só. O catálogo, o carrinho e
+          o checkout convivem na mesma tela, sem recarregar nada.
+        </p>
+        <ul class="itens">
+          <li>Catálogo com filtros por ambiente e faixa de preço</li>
+          <li>Carrinho e lista de desejos que sobrevivem ao fechar a aba</li>
+          <li>Área de login e tela de pagamento</li>
+          <li>Formulário de orçamento para projetos sob medida</li>
+        </ul>
+        <div class="acoes">
+          <a class="btn btn-forte" href="https://moveishouse.netlify.app">Ver site</a>
+          <a class="btn" href="https://github.com/bryanyiru/moveishouse">Ver código</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- ---------- LumièreGlow ---------- -->
+    <article class="projeto" style="--cor: #ff2ec4">
+      <div class="projeto-lado">
+        <span class="marca"></span>
+        <h3>LumièreGlow</h3>
+        <p class="tipo">Maquiagem e perfumaria</p>
+        <ul class="tags">
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>Node.js</li>
+          <li>Express</li>
+          <li>MongoDB</li>
+        </ul>
+      </div>
+
+      <div class="projeto-corpo">
+        <p class="resumo">
+          O oposto visual dos outros quatro: fundo escuro, rosa neon e dourado.
+          Foi onde testei o quanto uma paleta muda a sensação de um mesmo tipo de loja.
+        </p>
+        <ul class="itens">
+          <li>Vitrine de produtos com favoritos</li>
+          <li>Carrinho lateral que abre por cima da página</li>
+          <li>Checkout em etapas, com resumo do pedido</li>
+          <li>Tema escuro construído do zero, sem biblioteca</li>
+        </ul>
+        <div class="acoes">
+          <a class="btn btn-forte" href="https://flumierglow.netlify.app">Ver site</a>
+          <a class="btn" href="https://github.com/bryanyiru/lumiereglow">Ver código</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- ---------- Pata Amiga ---------- -->
+    <article class="projeto" style="--cor: #7C9473">
+      <div class="projeto-lado">
+        <span class="marca"></span>
+        <h3>Pata Amiga</h3>
+        <p class="tipo">Clínica veterinária</p>
+        <ul class="tags">
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>Node.js</li>
+          <li>Express</li>
+          <li>bcrypt</li>
+        </ul>
+      </div>
+
+      <div class="projeto-corpo">
+        <p class="resumo">
+          O único da lista que vende serviço, não produto — e por isso o desafio
+          mudou: em vez de carrinho, uma agenda. Em vez de vitrine, confiança.
+        </p>
+        <ul class="itens">
+          <li>Agendamento de consulta com escolha de serviço, data e horário</li>
+          <li>Cadastro e login com senha criptografada</li>
+          <li>Área do tutor com os agendamentos marcados</li>
+          <li>Páginas de serviços, equipe e depoimentos</li>
+        </ul>
+        <div class="acoes">
+          <a class="btn btn-forte" href="https://pata-amigas.netlify.app">Ver site</a>
+          <a class="btn" href="https://github.com/bryanyiru/pata-amiga">Ver código</a>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- ==========================================================
+       Rodapé
+       ========================================================== -->
+  <footer class="rodape">
+    <div class="container">
+      <p class="nota">
+        Os cinco sites estão publicados como front-end estático. Nos projetos com
+        servidor, o código do back-end em Node.js está no repositório e roda localmente
+        com <code>npm start</code>.
+      </p>
+      <p class="assinatura">
+        Bryan Eduardo Gouvea ·
+        <a href="https://github.com/bryanyiru">GitHub</a> ·
+        <a href="mailto:bryaneduardogouvea@gmail.com">E-mail</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
