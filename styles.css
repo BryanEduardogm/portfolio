@@ -5,14 +5,14 @@
    ========================================================================== */
 
 :root {
-  /* tons de papel e tinta */
-  --papel:      #F4F3F0;
-  --superficie: #FFFFFF;
-  --tinta:      #17171A;
-  --tinta-meia: #5F5E63;
-  --tinta-fraca:#8B8A90;
-  --linha:      #E2E0DB;
-  --linha-forte:#CFCCC5;
+  /* tons de papel e tinta — modo escuro */
+  --papel:      #131316;
+  --superficie: #1B1B20;
+  --tinta:      #EDECEA;
+  --tinta-meia: #A9A7AE;
+  --tinta-fraca:#7C7A82;
+  --linha:      #2C2C33;
+  --linha-forte:#3D3D46;
 
   /* tipografia */
   --display: "Bricolage Grotesque", Georgia, serif;
@@ -23,17 +23,51 @@
   --largura: 62rem;
 }
 
-/* modo escuro, seguindo a preferência do sistema de quem visita */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --papel:      #131316;
-    --superficie: #1B1B20;
-    --tinta:      #EDECEA;
-    --tinta-meia: #A9A7AE;
-    --tinta-fraca:#7C7A82;
-    --linha:      #2C2C33;
-    --linha-forte:#3D3D46;
-  }
+/* O tema escuro é o padrão. O botão no canto da tela troca para os tons
+   claros abaixo, colocando data-tema="claro" no <html>. */
+:root[data-tema="claro"] {
+  --papel:      #F4F3F0;
+  --superficie: #FFFFFF;
+  --tinta:      #17171A;
+  --tinta-meia: #5F5E63;
+  --tinta-fraca:#8B8A90;
+  --linha:      #E2E0DB;
+  --linha-forte:#CFCCC5;
+}
+
+/* ==========================================================================
+   Botão de troca de tema
+   ========================================================================== */
+
+.troca-tema {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tinta-meia);
+  background: var(--superficie);
+  border: 1px solid var(--linha-forte);
+  border-radius: 999px;
+  padding: 0.5rem 0.95rem;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.troca-tema:hover {
+  color: var(--tinta);
+  border-color: var(--tinta-meia);
+}
+
+.troca-tema-icone {
+  font-size: 0.9rem;
+  line-height: 1;
 }
 
 * { box-sizing: border-box; }
@@ -328,6 +362,10 @@ a:focus-visible,
 
 @media (max-width: 48rem) {
   .topo { padding: 4rem 0 3rem; }
+
+  /* no celular o botão fica só com o ícone, para não cobrir o texto */
+  .troca-tema { top: 0.75rem; right: 0.75rem; padding: 0.5rem 0.6rem; gap: 0; }
+  .troca-tema span:last-child { display: none; }
 
   .projeto {
     grid-template-columns: 1fr;

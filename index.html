@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bryan Eduardo Gouvea — Desenvolvedor Front-end</title>
-  <meta name="description" content="Portfólio de Bryan Eduardo Gouvea: cinco sites completos feitos com HTML, CSS, JavaScript e Node.js.">
+  <meta name="description" content="Portfólio de Bryan Eduardo Gouvea: cinco sites completos feitos com HTML, CSS, JavaScript, Node.js e Three.js.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,6 +14,12 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
 </head>
 <body>
+
+  <!-- Troca entre o tema escuro e o claro; a escolha fica salva no navegador -->
+  <button type="button" class="troca-tema" id="trocaTema" aria-pressed="true">
+    <span class="troca-tema-icone" id="trocaTemaIcone">◐</span>
+    <span id="trocaTemaTexto">claro</span>
+  </button>
 
   <!-- ==========================================================
        Cabeçalho — quem sou e como me achar
@@ -30,7 +36,7 @@
       </p>
 
       <ul class="contato">
-        <li><a href="https://github.com/bryanyiru">github.com/bryanyiru</a></li>
+        <li><a href="https://github.com/BryanEduardogm">github.com/BryanEduardogm</a></li>
         <li><a href="mailto:bryaneduardogouvea@gmail.com">bryaneduardogouvea@gmail.com</a></li>
       </ul>
     </div>
@@ -74,44 +80,11 @@
         </ul>
         <div class="acoes">
           <a class="btn btn-forte" href="https://novacel.netlify.app">Ver site</a>
-          <a class="btn" href="https://github.com/bryanyiru/novacell">Ver código</a>
+          <a class="btn" href="https://github.com/BryanEduardogm/novacell">Ver código</a>
         </div>
       </div>
     </article>
 
-    <!-- ---------- AutoForte Motors ---------- -->
-    <article class="projeto" style="--cor: #E63946">
-      <div class="projeto-lado">
-        <span class="marca"></span>
-        <h3>AutoForte Motors</h3>
-        <p class="tipo">Concessionária</p>
-        <ul class="tags">
-          <li>HTML</li>
-          <li>CSS</li>
-          <li>JavaScript</li>
-          <li>Node.js</li>
-          <li>Express</li>
-          <li>MongoDB</li>
-        </ul>
-      </div>
-
-      <div class="projeto-corpo">
-        <p class="resumo">
-          Uma landing page de página única, pensada para levar o visitante do
-          primeiro olhar até o agendamento de um test-drive sem nunca sair da tela.
-        </p>
-        <ul class="itens">
-          <li>Rolagem única com navegação por âncoras</li>
-          <li>Vitrine de estoque, seção da equipe e depoimentos de clientes</li>
-          <li>Formulário de contato e test-drive com validação campo a campo</li>
-          <li>Servidor em Node.js que recebe e guarda os pedidos</li>
-        </ul>
-        <div class="acoes">
-          <a class="btn btn-forte" href="https://autoforte-motors.netlify.app">Ver site</a>
-          <a class="btn" href="https://github.com/bryanyiru/autoforte-motors">Ver código</a>
-        </div>
-      </div>
-    </article>
 
     <!-- ---------- MóveisHouse ---------- -->
     <article class="projeto" style="--cor: #C1602B">
@@ -142,44 +115,11 @@
         </ul>
         <div class="acoes">
           <a class="btn btn-forte" href="https://moveishouse.netlify.app">Ver site</a>
-          <a class="btn" href="https://github.com/bryanyiru/moveishouse">Ver código</a>
+          <a class="btn" href="https://github.com/BryanEduardogm/moveishouse">Ver código</a>
         </div>
       </div>
     </article>
 
-    <!-- ---------- LumièreGlow ---------- -->
-    <article class="projeto" style="--cor: #ff2ec4">
-      <div class="projeto-lado">
-        <span class="marca"></span>
-        <h3>LumièreGlow</h3>
-        <p class="tipo">Maquiagem e perfumaria</p>
-        <ul class="tags">
-          <li>HTML</li>
-          <li>CSS</li>
-          <li>JavaScript</li>
-          <li>Node.js</li>
-          <li>Express</li>
-          <li>MongoDB</li>
-        </ul>
-      </div>
-
-      <div class="projeto-corpo">
-        <p class="resumo">
-          O oposto visual dos outros quatro: fundo escuro, rosa neon e dourado.
-          Foi onde testei o quanto uma paleta muda a sensação de um mesmo tipo de loja.
-        </p>
-        <ul class="itens">
-          <li>Vitrine de produtos com favoritos</li>
-          <li>Carrinho lateral que abre por cima da página</li>
-          <li>Checkout em etapas, com resumo do pedido</li>
-          <li>Tema escuro construído do zero, sem biblioteca</li>
-        </ul>
-        <div class="acoes">
-          <a class="btn btn-forte" href="https://flumierglow.netlify.app">Ver site</a>
-          <a class="btn" href="https://github.com/bryanyiru/lumiereglow">Ver código</a>
-        </div>
-      </div>
-    </article>
 
     <!-- ---------- Pata Amiga ---------- -->
     <article class="projeto" style="--cor: #7C9473">
@@ -210,7 +150,74 @@
         </ul>
         <div class="acoes">
           <a class="btn btn-forte" href="https://pata-amigas.netlify.app">Ver site</a>
-          <a class="btn" href="https://github.com/bryanyiru/pata-amiga">Ver código</a>
+          <a class="btn" href="https://github.com/BryanEduardogm/pata-amiga">Ver código</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- ---------- APEX ---------- -->
+    <article class="projeto" style="--cor: #C9A227">
+      <div class="projeto-lado">
+        <span class="marca"></span>
+        <h3>APEX</h3>
+        <p class="tipo">Coleção de carros</p>
+        <ul class="tags">
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>Three.js</li>
+          <li>WebGL</li>
+        </ul>
+      </div>
+
+      <div class="projeto-corpo">
+        <p class="resumo">
+          Catorze carros, cada um com página própria. O modelo 3D não é um
+          arquivo baixado: é montado por código a partir das medidas e do
+          estilo de carroceria de cada carro.
+        </p>
+        <ul class="itens">
+          <li>Carro em 3D gerado por parâmetros — proporções, carroceria, aerofólio e cor da pintura</li>
+          <li>Gira ao arrastar, direto no navegador, sem plugin</li>
+          <li>Ficha técnica montada a partir de uma fonte única de dados</li>
+          <li>Coleção com filtro e página de detalhe para cada modelo</li>
+        </ul>
+        <div class="acoes">
+          <a class="btn btn-forte" href="https://apex333.netlify.app">Ver site</a>
+          <a class="btn" href="https://github.com/BryanEduardogm/apex">Ver código</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- ---------- VoltBet ---------- -->
+    <article class="projeto" style="--cor: #17C964">
+      <div class="projeto-lado">
+        <span class="marca"></span>
+        <h3>VoltBet</h3>
+        <p class="tipo">Apostas e cassino</p>
+        <ul class="tags">
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>localStorage</li>
+        </ul>
+      </div>
+
+      <div class="projeto-corpo">
+        <p class="resumo">
+          Site de apostas esportivas feito como demonstração: o saldo é
+          fictício e fica só no navegador. Sete jogos de cassino escritos do
+          zero, sem biblioteca de jogos.
+        </p>
+        <ul class="itens">
+          <li>Cupom de apostas que soma as seleções e calcula o retorno</li>
+          <li>Aviator, Mines, Plinko, Roleta e três slots, cada um em seu arquivo</li>
+          <li>Saldo, extrato e recarga guardados entre visitas</li>
+          <li>Jogo responsável: aviso +18, teto mensal de depósito e opção de zerar a conta</li>
+        </ul>
+        <div class="acoes">
+          <a class="btn btn-forte" href="https://voltbet3.netlify.app">Ver site</a>
+          <a class="btn" href="https://github.com/BryanEduardogm/voltbet">Ver código</a>
         </div>
       </div>
     </article>
@@ -223,17 +230,19 @@
   <footer class="rodape">
     <div class="container">
       <p class="nota">
-        Os cinco sites estão publicados como front-end estático. Nos projetos com
+        Os cinco estão publicados como front-end estático. Nos projetos com
         servidor, o código do back-end em Node.js está no repositório e roda localmente
         com <code>npm start</code>.
       </p>
       <p class="assinatura">
         Bryan Eduardo Gouvea ·
-        <a href="https://github.com/bryanyiru">GitHub</a> ·
+        <a href="https://github.com/BryanEduardogm">GitHub</a> ·
         <a href="mailto:bryaneduardogouvea@gmail.com">E-mail</a>
       </p>
     </div>
   </footer>
+
+  <script src="script.js"></script>
 
 </body>
 </html>
