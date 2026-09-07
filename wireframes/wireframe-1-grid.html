@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Wireframe 1 — Grade de projetos</title>
+<style>
+  :root{
+    --bg:#111214; --panel:#1b1c1f; --line:#5b6bff; --line2:#7C9473; --text:#e8e8ea; --muted:#8a8a90;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:"Segoe UI",Arial,sans-serif;padding:32px}
+  .tag{position:fixed;top:12px;left:12px;background:#5b6bff;color:#fff;font-size:12px;padding:4px 10px;border-radius:999px;font-weight:600;z-index:10}
+  .wrap{max-width:1100px;margin:40px auto 0}
+  .box{border:2px dashed var(--line);border-radius:10px;padding:16px;position:relative}
+  .lbl{position:absolute;top:-11px;left:12px;background:var(--bg);padding:0 8px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--line);font-weight:700}
+  .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+  .logo{width:120px;height:24px;background:var(--panel);border-radius:4px}
+  .nav{display:flex;gap:14px}
+  .navitem{width:70px;height:18px;background:var(--panel);border-radius:4px}
+  .hero{margin-bottom:24px;padding:36px 24px;text-align:center}
+  .htitle{width:60%;height:34px;background:var(--panel);margin:0 auto 12px;border-radius:6px}
+  .hsub{width:40%;height:14px;background:var(--panel);margin:0 auto;border-radius:4px}
+  .filters{display:flex;gap:10px;justify-content:center;margin:20px 0}
+  .chip{width:90px;height:26px;background:var(--panel);border-radius:999px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:10px}
+  .card{border:2px dashed var(--line2);border-radius:10px;padding:14px;position:relative}
+  .thumb{width:100%;height:110px;background:var(--panel);border-radius:6px;margin-bottom:10px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12px}
+  .ctitle{width:70%;height:16px;background:var(--panel);border-radius:4px;margin-bottom:8px}
+  .ctags{display:flex;gap:6px;margin-bottom:10px}
+  .ctag{width:36px;height:12px;background:var(--panel);border-radius:3px}
+  .cline{width:100%;height:10px;background:var(--panel);border-radius:3px;margin-bottom:6px}
+  .cline:last-of-type{width:70%}
+  .cta{display:flex;gap:8px;margin-top:12px}
+  .btn{width:70px;height:24px;background:var(--panel);border-radius:6px}
+  .footer{margin-top:30px;padding:20px;text-align:center}
+  .fline{width:50%;height:12px;background:var(--panel);margin:0 auto 8px;border-radius:4px}
+  h2{font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin:36px 0 10px}
+</style>
+</head>
+<body>
+  <span class="tag">Wireframe 1 · Grade de projetos</span>
+  <div class="wrap">
+
+    <div class="box">
+      <span class="lbl">Cabeçalho fixo</span>
+      <div class="topbar">
+        <div class="logo"></div>
+        <div class="nav">
+          <div class="navitem"></div><div class="navitem"></div><div class="navitem"></div>
+        </div>
+      </div>
+      <div class="hero">
+        <div class="htitle"></div>
+        <div class="hsub"></div>
+      </div>
+    </div>
+
+    <h2>Projetos — grade de 3 colunas com filtro</h2>
+    <div class="box">
+      <span class="lbl">Filtros por tecnologia</span>
+      <div class="filters">
+        <div class="chip"></div><div class="chip"></div><div class="chip"></div><div class="chip"></div>
+      </div>
+      <div class="grid">
+        <div class="card"><span class="lbl">Card 1</span>
+          <div class="thumb">imagem/preview</div>
+          <div class="ctitle"></div>
+          <div class="ctags"><div class="ctag"></div><div class="ctag"></div><div class="ctag"></div></div>
+          <div class="cline"></div><div class="cline"></div>
+          <div class="cta"><div class="btn"></div><div class="btn"></div></div>
+        </div>
+        <div class="card"><span class="lbl">Card 2</span>
+          <div class="thumb">imagem/preview</div>
+          <div class="ctitle"></div>
+          <div class="ctags"><div class="ctag"></div><div class="ctag"></div><div class="ctag"></div></div>
+          <div class="cline"></div><div class="cline"></div>
+          <div class="cta"><div class="btn"></div><div class="btn"></div></div>
+        </div>
+        <div class="card"><span class="lbl">Card 3</span>
+          <div class="thumb">imagem/preview</div>
+          <div class="ctitle"></div>
+          <div class="ctags"><div class="ctag"></div><div class="ctag"></div><div class="ctag"></div></div>
+          <div class="cline"></div><div class="cline"></div>
+          <div class="cta"><div class="btn"></div><div class="btn"></div></div>
+        </div>
+        <div class="card"><span class="lbl">Card 4</span>
+          <div class="thumb">imagem/preview</div>
+          <div class="ctitle"></div>
+          <div class="ctags"><div class="ctag"></div><div class="ctag"></div><div class="ctag"></div></div>
+          <div class="cline"></div><div class="cline"></div>
+          <div class="cta"><div class="btn"></div><div class="btn"></div></div>
+        </div>
+        <div class="card"><span class="lbl">Card 5</span>
+          <div class="thumb">imagem/preview</div>
+          <div class="ctitle"></div>
+          <div class="ctags"><div class="ctag"></div><div class="ctag"></div><div class="ctag"></div></div>
+          <div class="cline"></div><div class="cline"></div>
+          <div class="cta"><div class="btn"></div><div class="btn"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box" style="margin-top:24px">
+      <span class="lbl">Rodapé</span>
+      <div class="footer">
+        <div class="fline"></div>
+        <div class="fline" style="width:30%"></div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

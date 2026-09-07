@@ -15,232 +15,297 @@
 </head>
 <body>
 
-  <!-- Troca entre o tema escuro e o claro; a escolha fica salva no navegador -->
-  <button type="button" class="troca-tema" id="trocaTema" aria-pressed="true">
-    <span class="troca-tema-icone" id="trocaTemaIcone">◐</span>
-    <span id="trocaTemaTexto">claro</span>
-  </button>
+  <a class="pular" href="#projetos">Pular para os projetos</a>
 
-  <!-- ==========================================================
-       Cabeçalho — quem sou e como me achar
-       ========================================================== -->
-  <header class="topo">
-    <div class="container">
-      <p class="etiqueta">Portfólio · Desenvolvimento web</p>
-      <h1>Bryan Eduardo<br>Gouvea</h1>
-      <p class="apresentacao">
-        Estudo desenvolvimento web e aprendo construindo coisas inteiras, não pedaços.
-        Aqui estão cinco sites completos — cada um com sua própria identidade visual,
-        suas telas, seu carrinho ou seu formulário funcionando de ponta a ponta.
-        Todos escritos à mão, sem framework e sem template pronto.
-      </p>
+  <div class="layout">
 
-      <ul class="contato">
-        <li><a href="https://github.com/BryanEduardogm">github.com/BryanEduardogm</a></li>
-        <li><a href="mailto:bryaneduardogouvea@gmail.com">bryaneduardogouvea@gmail.com</a></li>
-      </ul>
-    </div>
-  </header>
+    <!-- ==========================================================
+         Coluna da esquerda — fica parada enquanto a página rola
+         ========================================================== -->
+    <aside class="lateral">
+      <div class="lateral-interna">
 
-  <!-- ==========================================================
-       Projetos — cada um com a cor da própria marca
-       ========================================================== -->
-  <main class="container">
-
-    <div class="secao-titulo">
-      <h2>Projetos</h2>
-      <span class="contagem">05</span>
-    </div>
-
-    <!-- ---------- NovaCell ---------- -->
-    <article class="projeto" style="--cor: #5b6bff">
-      <div class="projeto-lado">
-        <span class="marca"></span>
-        <h3>NovaCell</h3>
-        <p class="tipo">Loja de celulares</p>
-        <ul class="tags">
-          <li>HTML</li>
-          <li>CSS</li>
-          <li>JavaScript</li>
-          <li>localStorage</li>
-        </ul>
-      </div>
-
-      <div class="projeto-corpo">
-        <p class="resumo">
-          Uma loja de eletrônicos de oito páginas, com catálogo de 160 produtos.
-          É o projeto mais completo em quantidade de tela: o cliente busca, filtra,
-          monta o carrinho, calcula o frete e fecha o pedido.
-        </p>
-        <ul class="itens">
-          <li>Busca e filtros por categoria, preço e destaque</li>
-          <li>Carrinho que continua cheio depois de fechar o navegador</li>
-          <li>Calculadora de frete e simulador de troca do aparelho usado</li>
-          <li>Login, área de perfil e finalização de compra</li>
-        </ul>
-        <div class="acoes">
-          <a class="btn btn-forte" href="https://novacel.netlify.app">Ver site</a>
-          <a class="btn" href="https://github.com/BryanEduardogm/novacell">Ver código</a>
+        <div class="lateral-topo">
+          <p class="etiqueta">Portfólio · Desenvolvimento web</p>
+          <a class="lateral-nome" href="#topo">Bryan Eduardo <br>Gouvea</a>
         </div>
-      </div>
-    </article>
 
+        <!-- A navegação acompanha a rolagem: o projeto que está na tela
+             aparece marcado aqui. Quem faz isso é o script.js. -->
+        <nav class="nav" aria-label="Projetos">
+          <ol>
+            <li><a href="#novacell"    style="--cor: #5b6bff"><span class="nav-num">01</span><span class="nav-nome">NovaCell</span></a></li>
+            <li><a href="#moveishouse" style="--cor: #C1602B"><span class="nav-num">02</span><span class="nav-nome">MóveisHouse</span></a></li>
+            <li><a href="#pata-amiga"  style="--cor: #7C9473"><span class="nav-num">03</span><span class="nav-nome">Pata Amiga</span></a></li>
+            <li><a href="#apex"        style="--cor: #C9A227"><span class="nav-num">04</span><span class="nav-nome">APEX</span></a></li>
+            <li><a href="#voltbet"     style="--cor: #17C964"><span class="nav-num">05</span><span class="nav-nome">VoltBet</span></a></li>
+          </ol>
+        </nav>
 
-    <!-- ---------- MóveisHouse ---------- -->
-    <article class="projeto" style="--cor: #C1602B">
-      <div class="projeto-lado">
-        <span class="marca"></span>
-        <h3>MóveisHouse</h3>
-        <p class="tipo">Loja de móveis</p>
-        <ul class="tags">
-          <li>HTML</li>
-          <li>CSS</li>
-          <li>JavaScript</li>
-          <li>Node.js</li>
-          <li>Express</li>
-          <li>MongoDB</li>
-        </ul>
-      </div>
+        <div class="lateral-pe">
+          <ul class="contato">
+            <li><a href="https://github.com/BryanEduardogm">GitHub</a></li>
+            <li><a href="mailto:bryaneduardogouvea@gmail.com">E-mail</a></li>
+          </ul>
 
-      <div class="projeto-corpo">
-        <p class="resumo">
-          Um e-commerce de móveis que cabe numa página só. O catálogo, o carrinho e
-          o checkout convivem na mesma tela, sem recarregar nada.
-        </p>
-        <ul class="itens">
-          <li>Catálogo com filtros por ambiente e faixa de preço</li>
-          <li>Carrinho e lista de desejos que sobrevivem ao fechar a aba</li>
-          <li>Área de login e tela de pagamento</li>
-          <li>Formulário de orçamento para projetos sob medida</li>
-        </ul>
-        <div class="acoes">
-          <a class="btn btn-forte" href="https://moveishouse.netlify.app">Ver site</a>
-          <a class="btn" href="https://github.com/BryanEduardogm/moveishouse">Ver código</a>
+          <!-- Troca entre o tema escuro e o claro; a escolha fica salva no navegador -->
+          <button type="button" class="troca-tema" id="trocaTema" aria-pressed="true">
+            <span class="troca-tema-icone" id="trocaTemaIcone">◐</span>
+            <span id="trocaTemaTexto">claro</span>
+          </button>
         </div>
+
       </div>
-    </article>
+    </aside>
 
+    <!-- ==========================================================
+         Coluna da direita — o conteúdo que rola
+         ========================================================== -->
+    <main class="conteudo">
 
-    <!-- ---------- Pata Amiga ---------- -->
-    <article class="projeto" style="--cor: #7C9473">
-      <div class="projeto-lado">
-        <span class="marca"></span>
-        <h3>Pata Amiga</h3>
-        <p class="tipo">Clínica veterinária</p>
-        <ul class="tags">
-          <li>HTML</li>
-          <li>CSS</li>
-          <li>JavaScript</li>
-          <li>Node.js</li>
-          <li>Express</li>
-          <li>bcrypt</li>
-        </ul>
-      </div>
-
-      <div class="projeto-corpo">
-        <p class="resumo">
-          O único da lista que vende serviço, não produto — e por isso o desafio
-          mudou: em vez de carrinho, uma agenda. Em vez de vitrine, confiança.
+      <header class="hero" id="topo">
+        <h1>Cinco sites<br>inteiros.</h1>
+        <p class="apresentacao">
+          Estudo desenvolvimento web e aprendo construindo coisas inteiras, não pedaços.
+          Cada um destes cinco projetos tem sua própria identidade visual, suas telas,
+          seu carrinho ou seu formulário funcionando de ponta a ponta.
+          Todos escritos à mão, sem framework e sem template pronto.
         </p>
-        <ul class="itens">
-          <li>Agendamento de consulta com escolha de serviço, data e horário</li>
-          <li>Cadastro e login com senha criptografada</li>
-          <li>Área do tutor com os agendamentos marcados</li>
-          <li>Páginas de serviços, equipe e depoimentos</li>
-        </ul>
-        <div class="acoes">
-          <a class="btn btn-forte" href="https://pata-amigas.netlify.app">Ver site</a>
-          <a class="btn" href="https://github.com/BryanEduardogm/pata-amiga">Ver código</a>
-        </div>
-      </div>
-    </article>
+        <p class="hero-dica" aria-hidden="true">Role para ver <span>↓</span></p>
+      </header>
 
-    <!-- ---------- APEX ---------- -->
-    <article class="projeto" style="--cor: #C9A227">
-      <div class="projeto-lado">
-        <span class="marca"></span>
-        <h3>APEX</h3>
-        <p class="tipo">Coleção de carros</p>
-        <ul class="tags">
-          <li>HTML</li>
-          <li>CSS</li>
-          <li>JavaScript</li>
-          <li>Three.js</li>
-          <li>WebGL</li>
-        </ul>
-      </div>
+      <section class="linha" id="projetos" aria-label="Projetos">
 
-      <div class="projeto-corpo">
-        <p class="resumo">
-          Catorze carros, cada um com página própria. O modelo 3D não é um
-          arquivo baixado: é montado por código a partir das medidas e do
-          estilo de carroceria de cada carro.
+        <!-- ---------- 01 · NovaCell ---------- -->
+        <article class="bloco" id="novacell" style="--cor: #5b6bff">
+          <div class="bloco-visual">
+            <div class="mock">
+              <div class="mock-barra" aria-hidden="true"><span></span><span></span><span></span><em>novacel.netlify.app</em></div>
+              <img src="img/novacell.png" width="1280" height="800" loading="lazy" decoding="async"
+                   alt="Página inicial da NovaCell, em tema escuro, com a chamada &quot;O smartphone certo, com garantia de verdade&quot; e quatro selos de vantagem.">
+            </div>
+          </div>
+
+          <div class="bloco-info">
+            <p class="num">01</p>
+            <h2>NovaCell</h2>
+            <p class="tipo">Loja de celulares</p>
+
+            <p class="resumo">
+              Uma loja de eletrônicos de oito páginas, com catálogo de 160 produtos.
+              É o projeto mais completo em quantidade de tela: o cliente busca, filtra,
+              monta o carrinho, calcula o frete e fecha o pedido.
+            </p>
+
+            <ul class="itens">
+              <li>Busca e filtros por categoria, preço e destaque</li>
+              <li>Carrinho que continua cheio depois de fechar o navegador</li>
+              <li>Calculadora de frete e simulador de troca do aparelho usado</li>
+              <li>Login, área de perfil e finalização de compra</li>
+            </ul>
+
+            <ul class="tags">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>localStorage</li>
+            </ul>
+
+            <div class="acoes">
+              <a class="btn btn-forte" href="https://novacel.netlify.app">Ver site</a>
+              <a class="btn" href="https://github.com/BryanEduardogm/novacell">Ver código</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ---------- 02 · MóveisHouse ---------- -->
+        <article class="bloco" id="moveishouse" style="--cor: #C1602B">
+          <div class="bloco-visual">
+            <div class="mock">
+              <div class="mock-barra" aria-hidden="true"><span></span><span></span><span></span><em>moveishouse.netlify.app</em></div>
+              <img src="img/moveishouse.png" width="1280" height="800" loading="lazy" decoding="async"
+                   alt="Página inicial da MóveisHouse, em tons claros, com menu de ambientes na lateral e a chamada &quot;A casa se monta por cômodo&quot;.">
+            </div>
+          </div>
+
+          <div class="bloco-info">
+            <p class="num">02</p>
+            <h2>MóveisHouse</h2>
+            <p class="tipo">Loja de móveis</p>
+
+            <p class="resumo">
+              Um e-commerce de móveis que cabe numa página só. O catálogo, o carrinho e
+              o checkout convivem na mesma tela, sem recarregar nada.
+            </p>
+
+            <ul class="itens">
+              <li>Catálogo com filtros por ambiente e faixa de preço</li>
+              <li>Carrinho e lista de desejos que sobrevivem ao fechar a aba</li>
+              <li>Área de login e tela de pagamento</li>
+              <li>Formulário de orçamento para projetos sob medida</li>
+            </ul>
+
+            <ul class="tags">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>Node.js</li>
+              <li>Express</li>
+              <li>MongoDB</li>
+            </ul>
+
+            <div class="acoes">
+              <a class="btn btn-forte" href="https://moveishouse.netlify.app">Ver site</a>
+              <a class="btn" href="https://github.com/BryanEduardogm/moveishouse">Ver código</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ---------- 03 · Pata Amiga ---------- -->
+        <article class="bloco" id="pata-amiga" style="--cor: #7C9473">
+          <div class="bloco-visual">
+            <div class="mock">
+              <div class="mock-barra" aria-hidden="true"><span></span><span></span><span></span><em>pata-amigas.netlify.app</em></div>
+              <img src="img/pata-amiga.png" width="1280" height="800" loading="lazy" decoding="async"
+                   alt="Página inicial da Pata Amiga, em bege e verde, com o título &quot;Marque a consulta do seu pet em 4 passos&quot; e o primeiro passo do agendamento.">
+            </div>
+          </div>
+
+          <div class="bloco-info">
+            <p class="num">03</p>
+            <h2>Pata Amiga</h2>
+            <p class="tipo">Clínica veterinária</p>
+
+            <p class="resumo">
+              O único da lista que vende serviço, não produto — e por isso o desafio
+              mudou: em vez de carrinho, uma agenda. Em vez de vitrine, confiança.
+            </p>
+
+            <ul class="itens">
+              <li>Agendamento de consulta com escolha de serviço, data e horário</li>
+              <li>Cadastro e login com senha criptografada</li>
+              <li>Área do tutor com os agendamentos marcados</li>
+              <li>Páginas de serviços, equipe e depoimentos</li>
+            </ul>
+
+            <ul class="tags">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>Node.js</li>
+              <li>Express</li>
+              <li>bcrypt</li>
+            </ul>
+
+            <div class="acoes">
+              <a class="btn btn-forte" href="https://pata-amigas.netlify.app">Ver site</a>
+              <a class="btn" href="https://github.com/BryanEduardogm/pata-amiga">Ver código</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ---------- 04 · APEX ---------- -->
+        <article class="bloco" id="apex" style="--cor: #C9A227">
+          <div class="bloco-visual">
+            <div class="mock">
+              <div class="mock-barra" aria-hidden="true"><span></span><span></span><span></span><em>apex333.netlify.app</em></div>
+              <img src="img/apex.png" width="1280" height="800" loading="lazy" decoding="async"
+                   alt="Página inicial do APEX, em preto com verde-limão, anunciando &quot;14 ícones. Uma garagem.&quot; sobre um fundo quadriculado.">
+            </div>
+          </div>
+
+          <div class="bloco-info">
+            <p class="num">04</p>
+            <h2>APEX</h2>
+            <p class="tipo">Coleção de carros</p>
+
+            <p class="resumo">
+              Catorze carros, cada um com página própria. O modelo 3D não é um
+              arquivo baixado: é montado por código a partir das medidas e do
+              estilo de carroceria de cada carro.
+            </p>
+
+            <ul class="itens">
+              <li>Carro em 3D gerado por parâmetros — proporções, carroceria, aerofólio e cor da pintura</li>
+              <li>Gira ao arrastar, direto no navegador, sem plugin</li>
+              <li>Ficha técnica montada a partir de uma fonte única de dados</li>
+              <li>Coleção com filtro e página de detalhe para cada modelo</li>
+            </ul>
+
+            <ul class="tags">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>Three.js</li>
+              <li>WebGL</li>
+            </ul>
+
+            <div class="acoes">
+              <a class="btn btn-forte" href="https://apex333.netlify.app">Ver site</a>
+              <a class="btn" href="https://github.com/BryanEduardogm/apex">Ver código</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ---------- 05 · VoltBet ---------- -->
+        <article class="bloco" id="voltbet" style="--cor: #17C964">
+          <div class="bloco-visual">
+            <div class="mock">
+              <div class="mock-barra" aria-hidden="true"><span></span><span></span><span></span><em>voltbet3.netlify.app</em></div>
+              <img src="img/voltbet.png" width="1280" height="800" loading="lazy" decoding="async"
+                   alt="Página inicial do VoltBet, em preto com verde neon, mostrando o jogo em destaque, as odds da rodada e o cupom de apostas vazio.">
+            </div>
+          </div>
+
+          <div class="bloco-info">
+            <p class="num">05</p>
+            <h2>VoltBet</h2>
+            <p class="tipo">Apostas e cassino</p>
+
+            <p class="resumo">
+              Site de apostas esportivas feito como demonstração: o saldo é
+              fictício e fica só no navegador. Sete jogos de cassino escritos do
+              zero, sem biblioteca de jogos.
+            </p>
+
+            <ul class="itens">
+              <li>Cupom de apostas que soma as seleções e calcula o retorno</li>
+              <li>Aviator, Mines, Plinko, Roleta e três slots, cada um em seu arquivo</li>
+              <li>Saldo, extrato e recarga guardados entre visitas</li>
+              <li>Jogo responsável: aviso +18, teto mensal de depósito e opção de zerar a conta</li>
+            </ul>
+
+            <ul class="tags">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>localStorage</li>
+            </ul>
+
+            <div class="acoes">
+              <a class="btn btn-forte" href="https://voltbet3.netlify.app">Ver site</a>
+              <a class="btn" href="https://github.com/BryanEduardogm/voltbet">Ver código</a>
+            </div>
+          </div>
+        </article>
+
+      </section>
+
+      <footer class="rodape">
+        <p class="nota">
+          Os cinco estão publicados como front-end estático. Nos projetos com
+          servidor, o código do back-end em Node.js está no repositório e roda localmente
+          com <code>npm start</code>.
         </p>
-        <ul class="itens">
-          <li>Carro em 3D gerado por parâmetros — proporções, carroceria, aerofólio e cor da pintura</li>
-          <li>Gira ao arrastar, direto no navegador, sem plugin</li>
-          <li>Ficha técnica montada a partir de uma fonte única de dados</li>
-          <li>Coleção com filtro e página de detalhe para cada modelo</li>
-        </ul>
-        <div class="acoes">
-          <a class="btn btn-forte" href="https://apex333.netlify.app">Ver site</a>
-          <a class="btn" href="https://github.com/BryanEduardogm/apex">Ver código</a>
-        </div>
-      </div>
-    </article>
-
-    <!-- ---------- VoltBet ---------- -->
-    <article class="projeto" style="--cor: #17C964">
-      <div class="projeto-lado">
-        <span class="marca"></span>
-        <h3>VoltBet</h3>
-        <p class="tipo">Apostas e cassino</p>
-        <ul class="tags">
-          <li>HTML</li>
-          <li>CSS</li>
-          <li>JavaScript</li>
-          <li>localStorage</li>
-        </ul>
-      </div>
-
-      <div class="projeto-corpo">
-        <p class="resumo">
-          Site de apostas esportivas feito como demonstração: o saldo é
-          fictício e fica só no navegador. Sete jogos de cassino escritos do
-          zero, sem biblioteca de jogos.
+        <p class="assinatura">
+          Bryan Eduardo Gouvea ·
+          <a href="https://github.com/BryanEduardogm">GitHub</a> ·
+          <a href="mailto:bryaneduardogouvea@gmail.com">E-mail</a>
         </p>
-        <ul class="itens">
-          <li>Cupom de apostas que soma as seleções e calcula o retorno</li>
-          <li>Aviator, Mines, Plinko, Roleta e três slots, cada um em seu arquivo</li>
-          <li>Saldo, extrato e recarga guardados entre visitas</li>
-          <li>Jogo responsável: aviso +18, teto mensal de depósito e opção de zerar a conta</li>
-        </ul>
-        <div class="acoes">
-          <a class="btn btn-forte" href="https://voltbet3.netlify.app">Ver site</a>
-          <a class="btn" href="https://github.com/BryanEduardogm/voltbet">Ver código</a>
-        </div>
-      </div>
-    </article>
+      </footer>
 
-  </main>
-
-  <!-- ==========================================================
-       Rodapé
-       ========================================================== -->
-  <footer class="rodape">
-    <div class="container">
-      <p class="nota">
-        Os cinco estão publicados como front-end estático. Nos projetos com
-        servidor, o código do back-end em Node.js está no repositório e roda localmente
-        com <code>npm start</code>.
-      </p>
-      <p class="assinatura">
-        Bryan Eduardo Gouvea ·
-        <a href="https://github.com/BryanEduardogm">GitHub</a> ·
-        <a href="mailto:bryaneduardogouvea@gmail.com">E-mail</a>
-      </p>
-    </div>
-  </footer>
+    </main>
+  </div>
 
   <script src="script.js"></script>
 
