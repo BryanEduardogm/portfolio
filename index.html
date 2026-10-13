@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bryan Eduardo Gouvea — Desenvolvedor Front-end</title>
-  <meta name="description" content="Portfólio de Bryan Eduardo Gouvea: cinco sites completos feitos com HTML, CSS, JavaScript, Node.js e Three.js.">
+  <meta name="description" content="Portfólio de Bryan Eduardo Gouvea: seis sites completos feitos com HTML, CSS, JavaScript, Node.js e Three.js.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,6 +31,7 @@
       <li><a href="#pata-amiga" style="--cor: #7C9473" aria-label="Pata Amiga">03</a></li>
       <li><a href="#apex" style="--cor: #C9A227" aria-label="APEX">04</a></li>
       <li><a href="#voltbet" style="--cor: #17C964" aria-label="VoltBet">05</a></li>
+      <li><a href="#fliperama" style="--cor: #FF2EC4" aria-label="Fliperama Neon">06</a></li>
     </ol>
   </nav>
 
@@ -49,7 +50,7 @@
 
       <p class="canto canto--be apresentacao">
         Estudo desenvolvimento web e aprendo construindo coisas inteiras, não pedaços.
-        Cinco sites completos, todos escritos à mão — sem framework e sem template pronto.
+        Seis sites completos, todos escritos à mão — sem framework e sem template pronto.
       </p>
 
       <p class="canto canto--bd dica" aria-hidden="true">Role para ver <span>↓</span></p>
@@ -199,6 +200,34 @@
       </a>
     </section>
 
+    <section class="tela tela--projeto" id="fliperama" style="--cor: #FF2EC4" aria-labelledby="t-fliperama">
+      <div class="coluna">
+        <p class="num" aria-hidden="true">06</p>
+        <h2 id="t-fliperama">Fliperama Neon</h2>
+        <p class="tipo">Jogos no navegador</p>
+
+        <p class="resumo">Dezesseis jogos que abrem direto no navegador, sem cadastro e sem download. Cada jogo é um arquivo .html só, com tudo dentro — do Pong a um tiro em primeira pessoa.</p>
+
+        <ul class="itens">
+          <li>Três jogos com modo online para jogar com um amigo, conectando os navegadores direto, sem servidor</li>
+          <li>Jogos 3D feitos com Three.js: tiro em primeira pessoa, corrida e construção em blocos</li>
+          <li>Música e efeitos gerados pelo próprio navegador, sem nenhum arquivo de áudio</li>
+          <li>Recordes guardados no navegador de quem joga; roda no PC e no celular</li>
+        </ul>
+
+        <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Canvas</li><li>Three.js</li><li>PeerJS</li><li>Web Audio</li></ul>
+
+        <div class="acoes">
+          <button type="button" class="btn btn-forte" data-abre="fliperama">Detalhes</button>
+          <a class="btn" href="https://fliperama-neon.netlify.app">Ver site</a>
+        </div>
+      </div>
+
+      <a class="quadro" href="https://fliperama-neon.netlify.app" aria-label="Abrir o site da Fliperama Neon">
+        <img src="img/fliperama.png" width="1280" height="800" loading="lazy" decoding="async" alt="Página inicial do Fliperama Neon, roxo com letras em neon rosa e ciano, anunciando &quot;16 jogos grátis. Até no PC da escola.&quot;">
+      </a>
+    </section>
+
     <!-- ==========================================================
          Fechamento — contato e o índice dos projetos
          ========================================================== -->
@@ -217,11 +246,12 @@
         <li><a href="#pata-amiga" style="--cor: #7C9473"><span>03</span>Pata Amiga</a></li>
         <li><a href="#apex" style="--cor: #C9A227"><span>04</span>APEX</a></li>
         <li><a href="#voltbet" style="--cor: #17C964"><span>05</span>VoltBet</a></li>
+        <li><a href="#fliperama" style="--cor: #FF2EC4"><span>06</span>Fliperama Neon</a></li>
       </ol>
 
       <div class="fim-pe">
         <p class="nota">
-          Os cinco estão publicados como front-end estático. Nos projetos com servidor,
+          Os seis estão publicados como front-end estático. Nos projetos com servidor,
           o back-end em Node.js está no repositório e roda local com <code>npm start</code>.
         </p>
         <p class="etiqueta">Bryan Eduardo Gouvea · 2026</p>
@@ -333,6 +363,27 @@
       <div class="acoes">
         <a class="btn btn-forte" href="https://voltbet3.netlify.app">Ver site</a>
         <a class="btn" href="https://github.com/BryanEduardogm/voltbet">Ver código</a>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="detalhe" id="detalhe-fliperama" style="--cor: #FF2EC4" aria-labelledby="dt-fliperama">
+    <form method="dialog"><button class="fechar" aria-label="Fechar">×</button></form>
+    <img class="detalhe-capa" src="img/fliperama.png" alt="" width="1280" height="800" loading="lazy">
+    <div class="detalhe-corpo">
+      <p class="tipo">06 · Jogos no navegador</p>
+      <h2 id="dt-fliperama">Fliperama Neon</h2>
+      <p class="resumo">Dezesseis jogos que abrem direto no navegador, sem cadastro e sem download. Cada jogo é um arquivo .html só, com tudo dentro — do Pong a um tiro em primeira pessoa.</p>
+      <ul class="itens">
+        <li>Três jogos com modo online para jogar com um amigo, conectando os navegadores direto, sem servidor</li>
+        <li>Jogos 3D feitos com Three.js: tiro em primeira pessoa, corrida e construção em blocos</li>
+        <li>Música e efeitos gerados pelo próprio navegador, sem nenhum arquivo de áudio</li>
+        <li>Recordes guardados no navegador de quem joga; roda no PC e no celular</li>
+      </ul>
+      <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Canvas</li><li>Three.js</li><li>PeerJS</li><li>Web Audio</li></ul>
+      <div class="acoes">
+        <a class="btn btn-forte" href="https://fliperama-neon.netlify.app">Ver site</a>
+        <a class="btn" href="https://github.com/BryanEduardogm/fliperama-neon">Ver código</a>
       </div>
     </div>
   </dialog>
