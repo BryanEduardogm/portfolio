@@ -1,9 +1,10 @@
 /* ==========================================================================
    Portfólio — comportamento da página
 
-   Duas coisas acontecem aqui:
+   Três coisas acontecem aqui:
    1. a troca entre o tema escuro e o claro, guardada no navegador;
-   2. a navegação da esquerda, que marca sozinha o projeto que está na tela.
+   2. a trilha de números na borda direita, que marca o projeto na tela;
+   3. o detalhe de cada projeto, que abre no botão "Detalhes".
    ========================================================================== */
 
 
@@ -54,63 +55,41 @@ aplicarTema(temaSalvo() || "escuro");
 
 
 /* --------------------------------------------------------------------------
-   2. A navegação acompanha a rolagem
+   2. A trilha acompanha a rolagem
 
-   Cada link da esquerda aponta para um projeto. Conforme a pessoa rola, o
-   link do projeto que está na tela ganha a classe .ativo — que no CSS pinta
-   o texto e acende a barrinha na cor da marca daquele projeto.
+   Existe uma linha imaginária no meio da tela. O projeto marcado é aquele
+   que a cruza — na abertura e no fechamento nenhum fica marcado.
 
-   A conta é simples: existe uma linha imaginária a 40% da altura da tela.
-   O projeto marcado é o último cujo topo já passou por essa linha. Enquanto
-   ninguém passou — ou seja, ainda estamos na apresentação — nada fica marcado.
-
-   A conta só roda uma vez por quadro (requestAnimationFrame), para não pesar
+   A conta roda uma vez por quadro (requestAnimationFrame), para não pesar
    durante a rolagem.
    -------------------------------------------------------------------------- */
 
-const links = Array.from(document.querySelectorAll(".nav a"));
-const blocos = links
+const links = Array.from(document.querySelectorAll(".trilha a"));
+const telas = links
   .map(function (link) {
     return document.querySelector(link.getAttribute("href"));
   })
   .filter(Boolean);
 
-const faixaNav = document.querySelector(".nav");
-let marcadoAgora = null;
-
-function marcarAtivo(bloco) {
-  if (bloco === marcadoAgora) return;
-  marcadoAgora = bloco;
-
-  let ativo = null;
-
+function marcarAtiva(tela) {
   links.forEach(function (link) {
-    const eleMesmo = bloco !== null && link.getAttribute("href") === "#" + bloco.id;
-    link.classList.toggle("ativo", eleMesmo);
-    if (eleMesmo) ativo = link;
+    link.classList.toggle("ativo", tela !== null && link.getAttribute("href") === "#" + tela.id);
   });
-
-  // No celular a lista vira uma fita horizontal estreita: se o item marcado
-  // ficou fora da parte visível, a fita anda até ele. No computador a fita
-  // não rola, e este trecho não faz nada.
-  if (ativo && faixaNav && faixaNav.scrollWidth > faixaNav.clientWidth) {
-    const alvo = ativo.offsetLeft - (faixaNav.clientWidth - ativo.offsetWidth) / 2;
-    faixaNav.scrollTo({ left: Math.max(0, alvo), behavior: "smooth" });
-  }
 }
 
 function conferirRolagem() {
-  const linha = window.innerHeight * 0.4;
+  const linha = window.innerHeight * 0.5;
   let atual = null;
 
-  blocos.forEach(function (bloco) {
-    if (bloco.getBoundingClientRect().top <= linha) atual = bloco;
+  telas.forEach(function (tela) {
+    const r = tela.getBoundingClientRect();
+    if (r.top <= linha && r.bottom > linha) atual = tela;
   });
 
-  marcarAtivo(atual);
+  marcarAtiva(atual);
 }
 
-if (blocos.length) {
+if (telas.length) {
   let agendado = false;
 
   function agendarConferencia() {
@@ -127,3 +106,31 @@ if (blocos.length) {
   window.addEventListener("resize", agendarConferencia);
   conferirRolagem();
 }
+
+
+/* --------------------------------------------------------------------------
+   3. Detalhe do projeto
+
+   Cada projeto tem um <dialog> no fim do HTML com a descrição completa.
+   O botão "Detalhes" carrega o id desse painel em data-abre, e aqui a
+   gente só faz a ligação: clicou, abre o painel correspondente.
+
+   O <dialog> nativo já cuida do resto sozinho: escurece o fundo, prende o
+   foco lá dentro, fecha no Esc e no botão × (que está num <form
+   method="dialog">). O único extra é fechar ao clicar fora, no fundo.
+   -------------------------------------------------------------------------- */
+
+document.querySelectorAll("[data-abre]").forEach(function (gatilho) {
+  gatilho.addEventListener("click", function () {
+    const painel = document.getElementById("detalhe-" + gatilho.dataset.abre);
+    if (painel && typeof painel.showModal === "function") painel.showModal();
+  });
+});
+
+document.querySelectorAll("dialog.detalhe").forEach(function (painel) {
+  painel.addEventListener("click", function (evento) {
+    // Um clique direto no <dialog> (e não em algo dentro dele) só acontece
+    // quando a pessoa clica no fundo escuro, fora do cartão.
+    if (evento.target === painel) painel.close();
+  });
+});

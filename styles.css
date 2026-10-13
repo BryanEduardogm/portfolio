@@ -1,9 +1,13 @@
 /* ==========================================================================
    Portfólio — Bryan Eduardo Gouvea
-   Layout de linha do tempo: uma coluna estreita parada na esquerda com a
-   navegação, e os projetos descendo na direita em blocos que trocam de lado.
-   A página é uma moldura neutra: quem tem cor são os projetos.
-   Cada bloco recebe sua cor de marca pela variável --cor, definida no HTML.
+
+   Uma tela por seção, do tamanho da janela. A abertura põe o nome no
+   centro e uma informação em cada canto; cada projeto divide a tela em
+   duas colunas — o texto lê primeiro, o print grande fica à direita; o
+   fechamento junta contato e o índice dos projetos.
+
+   A página é uma moldura neutra: quem tem cor são os projetos. Cada um
+   recebe a sua pela variável --cor, definida no HTML.
    ========================================================================== */
 
 :root {
@@ -21,13 +25,12 @@
   --corpo:   "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono:    "IBM Plex Mono", ui-monospace, Consolas, monospace;
 
-  /* medidas do layout de duas colunas */
-  --lateral-largura: 15rem;
-  --conteudo-largura: 60rem;
+  /* respiro das bordas da tela */
+  --margem: clamp(1.5rem, 4vw, 3.5rem);
 }
 
-/* O tema escuro é o padrão. O botão na coluna da esquerda troca para os tons
-   claros abaixo, colocando data-tema="claro" no <html>. */
+/* O tema escuro é o padrão. O botão no canto troca para os tons claros
+   abaixo, colocando data-tema="claro" no <html>. */
 :root[data-tema="claro"] {
   --papel:      #F4F3F0;
   --superficie: #FFFFFF;
@@ -40,7 +43,12 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  /* a rolagem "encaixa" no começo de cada tela. "proximity" em vez de
+     "mandatory" para não prender quem quer rolar pouco */
+  scroll-snap-type: y proximity;
+}
 
 body {
   margin: 0;
@@ -48,12 +56,12 @@ body {
   color: var(--tinta);
   font-family: var(--corpo);
   font-size: 1rem;
-  line-height: 1.65;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+  html { scroll-behavior: auto; scroll-snap-type: none; }
   * { transition: none !important; animation: none !important; }
 }
 
@@ -63,7 +71,7 @@ a:focus-visible,
 button:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 /* Atalho que só aparece para quem navega pelo teclado */
@@ -83,137 +91,14 @@ button:focus-visible {
 .pular:focus { left: 1rem; top: 1rem; }
 
 /* ==========================================================================
-   Esqueleto de duas colunas
+   Elementos fixos: o botão de tema e a trilha de números
    ========================================================================== */
-
-.layout {
-  display: grid;
-  grid-template-columns: var(--lateral-largura) minmax(0, 1fr);
-  gap: 3rem;
-  max-width: calc(var(--lateral-largura) + var(--conteudo-largura) + 3rem);
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-/* ==========================================================================
-   Coluna da esquerda — presa na tela enquanto o resto rola
-   ========================================================================== */
-
-.lateral {
-  position: sticky;
-  top: 0;
-  align-self: start;
-  height: 100vh;
-  padding: 3rem 0 2rem;
-}
-
-.lateral-interna {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-  height: 100%;
-}
-
-.etiqueta {
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--tinta-fraca);
-  margin: 0 0 0.9rem;
-}
-
-.lateral-nome {
-  display: block;
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: 1.5rem;
-  line-height: 1.05;
-  letter-spacing: -0.025em;
-  text-decoration: none;
-}
-
-/* --- lista de projetos --- */
-
-.nav { flex: 1; }
-
-.nav ol {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-}
-
-.nav a {
-  display: flex;
-  align-items: baseline;
-  gap: 0.75rem;
-  padding: 0.4rem 0;
-  text-decoration: none;
-  color: var(--tinta-fraca);
-  border-left: 2px solid transparent;
-  padding-left: 0.85rem;
-  margin-left: -0.85rem;
-  transition: color 0.18s ease, border-color 0.18s ease;
-}
-
-.nav a:hover { color: var(--tinta); }
-
-/* o item marcado é o projeto que está na tela — o script.js põe .ativo */
-.nav a.ativo {
-  color: var(--tinta);
-  border-left-color: var(--cor);
-}
-
-.nav-num {
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.06em;
-  color: var(--tinta-fraca);
-}
-
-.nav a.ativo .nav-num { color: var(--cor); }
-
-.nav-nome {
-  font-size: 0.92rem;
-  font-weight: 500;
-}
-
-/* --- rodapé da coluna --- */
-
-.lateral-pe {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  align-items: flex-start;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--linha);
-}
-
-.contato {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem 1.25rem;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-family: var(--mono);
-  font-size: 0.76rem;
-}
-
-.contato a {
-  text-decoration: none;
-  color: var(--tinta-meia);
-  border-bottom: 1px solid var(--linha-forte);
-  padding-bottom: 2px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-}
-
-.contato a:hover { color: var(--tinta); border-color: currentColor; }
 
 .troca-tema {
+  position: fixed;
+  top: var(--margem);
+  right: var(--margem);
+  z-index: 20;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -231,220 +116,111 @@ button:focus-visible {
 }
 
 .troca-tema:hover { color: var(--tinta); border-color: var(--tinta-meia); }
-
 .troca-tema-icone { font-size: 0.88rem; line-height: 1; }
 
-/* ==========================================================================
-   Coluna da direita — apresentação
-   ========================================================================== */
+/* a coluna de números na borda direita, no meio da altura */
+.trilha {
+  position: fixed;
+  right: var(--margem);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+}
 
-.conteudo { min-width: 0; }
-
-.hero {
-  min-height: 80vh;
+.trilha ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 6rem 0 4rem;
+  gap: 0.9rem;
 }
 
-.hero h1 {
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: clamp(2.75rem, 7.5vw, 5.25rem);
-  line-height: 0.95;
-  letter-spacing: -0.035em;
-  margin: 0 0 2rem;
-}
-
-.apresentacao {
-  max-width: 36rem;
-  font-size: 1.08rem;
-  color: var(--tinta-meia);
-  margin: 0 0 3rem;
-}
-
-.hero-dica {
+.trilha a {
+  display: block;
   font-family: var(--mono);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: var(--tinta-fraca);
+  text-decoration: none;
+  padding-right: 0.85rem;
+  border-right: 2px solid transparent;
+  transition: color 0.18s ease, border-color 0.18s ease;
+}
+
+.trilha a:hover { color: var(--tinta); }
+
+/* o número marcado é o projeto que está na tela — o script.js põe .ativo */
+.trilha a.ativo {
+  color: var(--cor);
+  border-right-color: var(--cor);
+}
+
+/* ==========================================================================
+   A tela
+   ========================================================================== */
+
+.tela {
+  min-height: 100vh;
+  min-height: 100dvh;
+  scroll-snap-align: start;
+  padding: var(--margem);
+  /* deixa espaço à direita para a trilha de números não cobrir nada */
+  padding-right: calc(var(--margem) + 2.5rem);
+}
+
+/* ==========================================================================
+   Peças de texto que se repetem
+   ========================================================================== */
+
+.etiqueta {
+  font-family: var(--mono);
+  font-size: 0.7rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--tinta-fraca);
   margin: 0;
 }
 
-.hero-dica span {
-  display: inline-block;
-  animation: descer 2s ease-in-out infinite;
-}
-
-@keyframes descer {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(4px); }
-}
-
-/* ==========================================================================
-   A linha do tempo dos projetos
-   O traço vertical corre pelo meio; cada bloco troca de lado.
-   ========================================================================== */
-
-.linha {
-  position: relative;
-  padding: 1rem 0 2rem;
-}
-
-/* o fio que costura os cinco projetos */
-.linha::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: var(--linha);
-}
-
-.bloco {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 3rem;
-  align-items: center;
-  padding: 4.5rem 0;
-  position: relative;
-}
-
-/* a bolinha colorida no fio, na altura de cada projeto */
-.bloco::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 0.6rem;
-  height: 0.6rem;
-  border-radius: 50%;
-  background: var(--cor);
-  box-shadow: 0 0 0 6px var(--papel);
-}
-
-/* nos pares, a imagem vai para a direita e o texto para a esquerda */
-.bloco:nth-child(even) .bloco-visual { order: 2; }
-
-/* --- o retrato do projeto: uma janela de navegador desenhada em CSS --- */
-
-.bloco-visual { min-width: 0; }
-
-.mock {
-  border: 1px solid var(--linha-forte);
-  border-radius: 8px;
-  overflow: hidden;
-  background: var(--superficie);
-  transition: transform 0.25s ease, border-color 0.25s ease;
-}
-
-.bloco:hover .mock {
-  transform: translateY(-4px);
-  border-color: var(--cor);
-}
-
-.mock-barra {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.5rem 0.7rem;
-  border-bottom: 1px solid var(--linha);
-  background: var(--papel);
-}
-
-.mock-barra span {
-  width: 0.45rem;
-  height: 0.45rem;
-  border-radius: 50%;
-  background: var(--linha-forte);
-}
-
-.mock-barra em {
-  margin-left: 0.6rem;
-  font-family: var(--mono);
-  font-style: normal;
-  font-size: 0.62rem;
-  color: var(--tinta-fraca);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* O miolo é o print do site, tirado da versão publicada.
-   Os cinco prints têm alturas diferentes, então todos são recortados na
-   mesma proporção, sempre a partir do topo — que é a parte que importa. */
-.mock img {
-  display: block;
-  width: 100%;
-  /* sem isto o atributo height="" do HTML venceria o aspect-ratio */
-  height: auto;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  object-position: top center;
-  background: var(--linha);
-}
-
-/* --- o texto do projeto --- */
-
-.bloco-info { min-width: 0; }
-
-.num {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.1rem;
-  height: 2.1rem;
-  border-radius: 50%;
-  background: var(--cor);
-  color: #fff;
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  font-weight: 500;
-  margin: 0 0 1rem;
-}
-
-.bloco-info h2 {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: 2rem;
-  line-height: 1.1;
-  letter-spacing: -0.025em;
-  margin: 0 0 0.3rem;
-}
-
 .tipo {
   font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.09em;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--tinta-fraca);
-  margin: 0 0 1.25rem;
+  margin: 0.3rem 0 0;
 }
 
-.resumo {
-  font-size: 1.02rem;
-  margin: 0 0 1.35rem;
-}
-
-.itens {
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
   list-style: none;
   padding: 0;
-  margin: 0 0 1.5rem;
+  margin: 1rem 0 0;
 }
+
+.tags li {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  color: var(--tinta-meia);
+  background: var(--superficie);
+  border: 1px solid var(--linha);
+  border-radius: 3px;
+  padding: 0.15rem 0.42rem;
+}
+
+.itens { list-style: none; padding: 0; margin: 1rem 0 0; }
 
 .itens li {
   position: relative;
   padding-left: 1.4rem;
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.4rem;
   color: var(--tinta-meia);
   font-size: 0.93rem;
 }
 
-/* o marcador da lista também usa a cor do projeto */
+/* o marcador da lista usa a cor do projeto */
 .itens li::before {
   content: "";
   position: absolute;
@@ -455,69 +231,263 @@ button:focus-visible {
   background: var(--cor);
 }
 
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  list-style: none;
-  padding: 0;
-  margin: 0 0 1.6rem;
-}
-
-.tags li {
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  color: var(--tinta-meia);
-  background: var(--superficie);
-  border: 1px solid var(--linha);
-  border-radius: 3px;
-  padding: 0.18rem 0.45rem;
-}
-
 .acoes {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.7rem;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
 }
 
 .btn {
   display: inline-block;
   font-family: var(--corpo);
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   font-weight: 500;
   text-decoration: none;
-  padding: 0.55rem 1.1rem;
-  border-radius: 4px;
+  padding: 0.55rem 1.05rem;
+  border-radius: 6px;
   border: 1px solid var(--linha-forte);
   color: var(--tinta);
   background: var(--superficie);
+  cursor: pointer;
+  line-height: 1.3;
   transition: border-color 0.15s ease, transform 0.15s ease;
 }
 
-.btn:hover { border-color: var(--cor); transform: translateY(-1px); }
+.btn:hover { border-color: var(--cor, var(--tinta-meia)); transform: translateY(-1px); }
 
-.btn-forte {
-  background: var(--cor);
-  border-color: var(--cor);
-  color: #fff;
-}
-
+.btn-forte { background: var(--cor); border-color: var(--cor); color: #fff; }
 .btn-forte:hover { filter: brightness(1.08); }
 
 /* ==========================================================================
-   Rodapé
+   Abertura — nome no meio, uma informação em cada canto
    ========================================================================== */
 
-.rodape {
-  padding: 3rem 0 5rem;
-  border-top: 1px solid var(--linha-forte);
+.tela--abertura {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "ce   .    cd"
+    "meio meio meio"
+    "be   .    bd";
+  gap: 1.5rem;
+}
+
+.canto { min-width: 0; margin: 0; }
+.canto--ce { grid-area: ce; align-self: start; justify-self: start; }
+.canto--be { grid-area: be; align-self: end; justify-self: start; }
+.canto--bd { grid-area: bd; align-self: end; justify-self: end; }
+
+.meio {
+  grid-area: meio;
+  justify-self: center;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+  min-height: 0;
+  max-width: 100%;
+}
+
+.foto {
+  width: 6.5rem;
+  height: 6.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+  /* o rosto fica na parte de cima da foto; sem isto o corte pega o peito */
+  object-position: center 20%;
+  border: 2px solid var(--linha-forte);
+}
+
+.tela--abertura h1 {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(3.5rem, 11vw, 9rem);
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+  text-align: center;
+  margin: 0;
+}
+
+.apresentacao {
+  max-width: 24rem;
+  font-size: 0.95rem;
+  color: var(--tinta-meia);
+  margin: 0;
+}
+
+.dica {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tinta-fraca);
+  margin: 0;
+}
+
+.dica span { display: inline-block; animation: descer 2s ease-in-out infinite; }
+
+@keyframes descer {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(4px); }
+}
+
+/* ==========================================================================
+   Tela de projeto — coluna de texto à esquerda, print à direita
+   ========================================================================== */
+
+.tela--projeto {
+  display: grid;
+  grid-template-columns: minmax(0, 23rem) minmax(0, 1fr);
+  align-items: center;
+  gap: 3.5rem;
+}
+
+.coluna { min-width: 0; }
+
+.num {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  color: var(--cor);
+  margin: 0 0 0.75rem;
+}
+
+.tela--projeto h2 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.resumo {
+  font-size: 0.97rem;
+  color: var(--tinta-meia);
+  margin: 1.25rem 0 0;
+}
+
+/* O print: ocupa a coluna da direita, mas nunca mais alto que a tela.
+   Como a proporção é 1280x800 (1,6), a largura que cabe numa dada
+   altura é essa altura vezes 1,6 — daí o cálculo abaixo. */
+.quadro {
+  display: block;
+  width: 100%;
+  max-width: calc((100vh - 2 * var(--margem)) * 1.6);
+  margin-inline: auto;
+  border: 1px solid var(--linha-forte);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--superficie);
+  box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.6);
+  transition: transform 0.35s ease, border-color 0.35s ease;
+}
+
+.quadro:hover { transform: translateY(-6px); border-color: var(--cor); }
+
+.quadro img {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* reserva o espaço antes da imagem carregar, para o layout não pular */
+  aspect-ratio: 1280 / 800;
+}
+
+/* ==========================================================================
+   Fechamento — contato e índice dos projetos
+   ========================================================================== */
+
+.tela--fim {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.fim-topo {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.tela--fim h2 {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+.fim-links { display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-end; }
+
+.contato-link {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  text-decoration: none;
+  color: var(--tinta-meia);
+  border-bottom: 1px solid var(--linha-forte);
+  padding-bottom: 2px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.contato-link:hover { color: var(--tinta); border-color: currentColor; }
+
+.indice {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.indice a {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.55rem 0;
+  text-decoration: none;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+  letter-spacing: -0.02em;
+  border-top: 1px solid var(--linha);
+  transition: color 0.18s ease, padding-left 0.18s ease;
+}
+
+.indice li:last-child a { border-bottom: 1px solid var(--linha); }
+
+.indice a:hover { color: var(--cor); padding-left: 0.5rem; }
+
+.indice span {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--tinta-fraca);
+}
+
+.indice a:hover span { color: var(--cor); }
+
+.fim-pe {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
 }
 
 .nota {
-  font-size: 0.88rem;
-  color: var(--tinta-meia);
-  max-width: 38rem;
-  margin: 0 0 1.5rem;
+  max-width: 34rem;
+  font-size: 0.82rem;
+  color: var(--tinta-fraca);
+  margin: 0;
 }
 
 .nota code {
@@ -529,126 +499,115 @@ button:focus-visible {
   padding: 0.08em 0.32em;
 }
 
-.assinatura {
-  font-family: var(--mono);
-  font-size: 0.78rem;
-  color: var(--tinta-fraca);
-  margin: 0;
-}
-
-.assinatura a { text-decoration: none; border-bottom: 1px solid var(--linha-forte); }
-.assinatura a:hover { border-color: currentColor; }
-
 /* ==========================================================================
-   Telas médias — a lateral encolhe
+   Detalhe do projeto — o <dialog> que abre no centro
    ========================================================================== */
 
-@media (max-width: 68rem) {
-  :root { --lateral-largura: 12rem; }
-
-  .layout { gap: 2rem; padding: 0 1.5rem; }
-
-  .bloco { gap: 2rem; padding: 3.5rem 0; }
+.detalhe {
+  width: min(44rem, calc(100vw - 2rem));
+  max-height: calc(100vh - 2rem);
+  padding: 0;
+  border: 1px solid var(--linha-forte);
+  border-radius: 14px;
+  background: var(--superficie);
+  color: var(--tinta);
+  overflow: hidden;
+  animation: aparecer 0.2s ease-out;
 }
 
+.detalhe::backdrop { background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(3px); }
+
+@keyframes aparecer {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.detalhe form { position: absolute; top: 0.75rem; right: 0.75rem; margin: 0; z-index: 1; }
+
+.fechar {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.fechar:hover { background: rgba(0, 0, 0, 0.8); }
+
+.detalhe-capa {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 8;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.detalhe-corpo {
+  padding: 1.5rem 1.75rem 1.75rem;
+  overflow-y: auto;
+  max-height: calc(100vh - 2rem - 22rem);
+}
+
+.detalhe-corpo .tipo { margin: 0; }
+
+.detalhe-corpo h2 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.9rem;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin: 0.3rem 0 0;
+}
+
+.detalhe-corpo .resumo { font-size: 1rem; color: var(--tinta); }
+
 /* ==========================================================================
-   Celular — vira uma coluna só, e a navegação sobe para o topo
+   Celular — tudo vira uma coluna só
    ========================================================================== */
 
 @media (max-width: 52rem) {
-  .layout {
-    display: block;
-    padding: 0;
-  }
+  html { scroll-snap-type: none; }
 
-  /* a coluna da esquerda vira uma barra grudada no topo, que rola na horizontal */
-  .lateral {
-    height: auto;
-    padding: 0;
-    z-index: 20;
-    background: var(--papel);
-    border-bottom: 1px solid var(--linha);
-  }
-
-  .lateral-interna {
-    flex-direction: row;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.75rem 1.25rem;
-  }
-
-  .lateral-topo { flex-shrink: 0; }
-
-  .etiqueta { display: none; }
-
-  .lateral-nome { font-size: 0.95rem; }
-  .lateral-nome br { display: none; }
-
-  .nav {
-    flex: 1;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    /* a barra de rolagem da fita de números só atrapalha o visual */
-    scrollbar-width: none;
-  }
-
-  .nav::-webkit-scrollbar { display: none; }
-
-  .nav ol { flex-direction: row; gap: 0.35rem; }
-
-  .nav a {
-    border-left: none;
-    border-bottom: 2px solid transparent;
-    margin-left: 0;
-    padding: 0.2rem 0.4rem;
-    white-space: nowrap;
-  }
-
-  .nav a.ativo { border-left-color: transparent; border-bottom-color: var(--cor); }
-
-  .nav-nome { display: none; }
-
-  .nav-num { font-size: 0.75rem; }
-
-  /* no celular a navegação já ocupa o topo: contato e tema descem para o rodapé */
-  .lateral-pe {
-    flex-direction: row;
-    align-items: center;
-    gap: 0.75rem;
-    padding-top: 0;
-    border-top: none;
-    flex-shrink: 0;
-  }
-
-  .contato { display: none; }
+  .trilha { display: none; }
 
   .troca-tema { padding: 0.4rem 0.55rem; gap: 0; }
   .troca-tema span:last-child { display: none; }
 
-  .conteudo { padding: 0 1.25rem; }
-
-  .hero { min-height: auto; padding: 3.5rem 0 3rem; }
-
-  .apresentacao { margin-bottom: 2rem; }
-
-  /* sem o fio do meio: os blocos viram uma pilha */
-  .linha::before { display: none; }
-
-  .bloco {
-    grid-template-columns: 1fr;
-    gap: 1.75rem;
-    padding: 2.5rem 0;
-    border-top: 1px solid var(--linha);
+  .tela {
+    min-height: auto;
+    padding: var(--margem) 1.25rem;
+    border-bottom: 1px solid var(--linha);
   }
 
-  .bloco::before { display: none; }
+  /* a abertura empilha: etiqueta, foto e nome, texto, dica */
+  .tela--abertura {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: "ce" "meio" "be" "bd";
+    padding-top: calc(var(--margem) + 3rem);
+  }
 
-  /* na pilha a imagem vem sempre antes do texto */
-  .bloco:nth-child(even) .bloco-visual { order: 0; }
+  .canto--bd { justify-self: start; }
+  .meio { padding: 2rem 0; }
+  .foto { width: 5rem; height: 5rem; }
 
-  .bloco-info h2 { font-size: 1.7rem; }
+  /* o projeto perde a segunda coluna: texto em cima, print embaixo */
+  .tela--projeto {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
 
+  .acoes { width: 100%; }
   .acoes .btn { flex: 1 1 auto; text-align: center; }
 
-  .rodape { padding: 2.5rem 0 4rem; }
+  .fim-topo, .fim-pe { flex-direction: column; align-items: flex-start; }
+  .fim-links { align-items: flex-start; }
+
+  .detalhe { max-height: calc(100vh - 1rem); overflow-y: auto; }
+  .detalhe-corpo { padding: 1.25rem; max-height: none; }
 }
